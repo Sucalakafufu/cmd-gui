@@ -1,0 +1,59 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>About</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>About</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>187</width>
+            <height>134</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>About</string>
+    </property>
+    <widget class="QTextEdit">
+        <property name="name">
+            <cstring>about_textEdit</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>168</width>
+                <height>80</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&lt;p align="center"&gt;CMD GUI Alpha Release 0.1&lt;/p&gt;
+&lt;p align="center"&gt;To Help Those With Less Knowledge of the CMD Prompt.&lt;/p&gt;</string>
+        </property>
+        <property name="wordWrap">
+            <enum>WidgetWidth</enum>
+        </property>
+        <property name="readOnly">
+            <bool>true</bool>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>about_pushButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>50</x>
+                <y>100</y>
+                <width>82</width>
+                <height>25</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>OK</string>
+        </property>
+    </widget>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
