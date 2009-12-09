@@ -8,12 +8,44 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>454</width>
-            <height>439</height>
+            <width>458</width>
+            <height>444</height>
         </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>1</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>458</width>
+            <height>444</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>458</width>
+            <height>444</height>
+        </size>
+    </property>
+    <property name="baseSize">
+        <size>
+            <width>458</width>
+            <height>444</height>
+        </size>
+    </property>
+    <property name="cursor">
+        <cursor>2</cursor>
     </property>
     <property name="caption">
         <string>CMD GUI</string>
+    </property>
+    <property name="dockWindowsMovable">
+        <bool>false</bool>
     </property>
     <widget class="QComboBox">
         <property name="name">
@@ -76,22 +108,6 @@
             </widget>
         </vbox>
     </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>display_command_lineEdit</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>260</x>
-                <y>150</y>
-                <width>170</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property name="readOnly">
-            <bool>true</bool>
-        </property>
-    </widget>
     <widget class="QLabel">
         <property name="name">
             <cstring>generated_command_Label</cstring>
@@ -123,43 +139,6 @@
         <property name="text">
             <string>Last 10 Sent Commands</string>
         </property>
-    </widget>
-    <widget class="QFrame">
-        <property name="name">
-            <cstring>send_frame</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>350</y>
-                <width>330</width>
-                <height>45</height>
-            </rect>
-        </property>
-        <property name="frameShape">
-            <enum>StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-            <enum>Raised</enum>
-        </property>
-        <hbox>
-            <property name="name">
-                <cstring>unnamed</cstring>
-            </property>
-            <widget class="QLineEdit">
-                <property name="name">
-                    <cstring>CMD_lineEdit</cstring>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>CMD_pushButton</cstring>
-                </property>
-                <property name="text">
-                    <string>Send Command</string>
-                </property>
-            </widget>
-        </hbox>
     </widget>
     <widget class="QFrame">
         <property name="name">
@@ -201,6 +180,43 @@
             </widget>
         </vbox>
     </widget>
+    <widget class="QFrame">
+        <property name="name">
+            <cstring>send_frame</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>350</y>
+                <width>330</width>
+                <height>45</height>
+            </rect>
+        </property>
+        <property name="frameShape">
+            <enum>StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+            <enum>Raised</enum>
+        </property>
+        <hbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>CMD_lineEdit</cstring>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>CMD_pushButton</cstring>
+                </property>
+                <property name="text">
+                    <string>Send Command</string>
+                </property>
+            </widget>
+        </hbox>
+    </widget>
     <widget class="QLabel">
         <property name="name">
             <cstring>enter_command_label</cstring>
@@ -217,6 +233,25 @@
             <string>Enter Command</string>
         </property>
     </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>display_command_lineEdit</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>260</x>
+                <y>150</y>
+                <width>170</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="cursor">
+            <cursor>0</cursor>
+        </property>
+        <property name="readOnly">
+            <bool>true</bool>
+        </property>
+    </widget>
 </widget>
 <menubar>
     <property name="name">
@@ -226,7 +261,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>454</width>
+            <width>458</width>
             <height>29</height>
         </rect>
     </property>
