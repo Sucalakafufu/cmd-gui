@@ -30,3 +30,9 @@ void CMD_GUI::showAbout()
 	about->setFixedSize(188,129);
 	about->show();
 }
+
+
+void CMD_GUI::startFF()
+{
+	system("start firefox");
+}
