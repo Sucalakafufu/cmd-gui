@@ -8,31 +8,31 @@
 *****************************************************************************/
 #include <qstatusbar.h>
 
-void CMD_GUI::init()
+void CMD_GUI::init() //called in constructor
 {
-	settings = new Settings(this,0,true,0);
+	settings = new Settings(this,0,true,0); //create new settings dialog and about dialog 
 	about = new About(this,0,true,0);
 }
 
-void CMD_GUI::showSettings()
+void CMD_GUI::showSettings() //set fixed size and show settings dialog
 {
 	settings->setFixedSize(188,129);
 	settings->show();
 }
 
-void CMD_GUI::openCMD()
+void CMD_GUI::openCMD() //start CMD Prompt
 {
 	system("START CMD");
 }
 
-void CMD_GUI::showAbout()
+void CMD_GUI::showAbout() //set fixed size and show about dialog
 {
 	about->setFixedSize(188,129);
 	about->show();
 }
 
 
-void CMD_GUI::startFF()
+void CMD_GUI::startFF() //function to start firefox
 {
 	system("start firefox");
 }
