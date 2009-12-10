@@ -120,6 +120,36 @@
         <receiver>Settings</receiver>
         <slot>close()</slot>
     </connection>
+    <connection>
+        <sender>do_nothing_checkBox</sender>
+        <signal>clicked()</signal>
+        <receiver>Settings</receiver>
+        <slot>toggleNothing()</slot>
+    </connection>
+    <connection>
+        <sender>open_CMD_checkBox</sender>
+        <signal>clicked()</signal>
+        <receiver>Settings</receiver>
+        <slot>toggleCMD()</slot>
+    </connection>
+    <connection>
+        <sender>start_Fire_checkBox</sender>
+        <signal>clicked()</signal>
+        <receiver>Settings</receiver>
+        <slot>toggleFire()</slot>
+    </connection>
 </connections>
+<includes>
+    <include location="global" impldecl="in declaration">qfile.h</include>
+    <include location="local" impldecl="in implementation">settings.ui.h</include>
+</includes>
+<slots>
+    <slot>toggleCMD()</slot>
+    <slot>toggleFire()</slot>
+    <slot>toggleNothing()</slot>
+</slots>
+<functions>
+    <function access="private">init()</function>
+</functions>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
