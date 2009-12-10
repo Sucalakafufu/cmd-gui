@@ -51,10 +51,15 @@ void Settings::toggleCMD()
 
 void Settings::toggleFire()
 {
-
+	if (start_Fire_checkBox->isChecked())
+		do_nothing_checkBox->setChecked(false);
 }
 
 void Settings::toggleNothing()
 {
-
+	if (do_nothing_checkBox->isChecked())
+	{
+		open_CMD_checkBox->setChecked(false);
+		start_Fire_checkBox->setChecked(false);
+	}
 }
