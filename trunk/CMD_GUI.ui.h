@@ -36,3 +36,14 @@ void CMD_GUI::startFF() //function to start firefox
 {
 	system("start firefox");
 }
+
+
+void CMD_GUI::cmdNone()
+{
+	if(dir_radioButton->isOn())
+		dir_radioButton->toggle();
+	if(start_radioButton->isOn())
+		start_radioButton->toggle();
+	if(!none_radioButton->isOn())
+		none_radioButton->toggle();
+}
