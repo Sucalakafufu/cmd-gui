@@ -142,9 +142,6 @@
 <includes>
     <include location="local" impldecl="in implementation">settings.ui.h</include>
 </includes>
-<forwards>
-    <forward>bool testing;</forward>
-</forwards>
 <slots>
     <slot>toggleCMD()</slot>
     <slot>toggleFire()</slot>
