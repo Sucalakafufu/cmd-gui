@@ -47,67 +47,6 @@
     <property name="dockWindowsMovable">
         <bool>false</bool>
     </property>
-    <widget class="QComboBox">
-        <property name="name">
-            <cstring>comboBox</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>260</x>
-                <y>300</y>
-                <width>170</width>
-                <height>20</height>
-            </rect>
-        </property>
-    </widget>
-    <widget class="QGroupBox">
-        <property name="name">
-            <cstring>Commands_groupBox</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>260</x>
-                <y>20</y>
-                <width>171</width>
-                <height>100</height>
-            </rect>
-        </property>
-        <property name="title">
-            <string>Display Commands</string>
-        </property>
-        <vbox>
-            <property name="name">
-                <cstring>unnamed</cstring>
-            </property>
-            <widget class="QRadioButton">
-                <property name="name">
-                    <cstring>start_radioButton</cstring>
-                </property>
-                <property name="text">
-                    <string>Start Program</string>
-                </property>
-            </widget>
-            <widget class="QRadioButton">
-                <property name="name">
-                    <cstring>dir_radioButton</cstring>
-                </property>
-                <property name="text">
-                    <string>Display Directory Contents</string>
-                </property>
-            </widget>
-            <widget class="QRadioButton">
-                <property name="name">
-                    <cstring>none_radioButton</cstring>
-                </property>
-                <property name="text">
-                    <string>None</string>
-                </property>
-                <property name="checked">
-                    <bool>true</bool>
-                </property>
-            </widget>
-        </vbox>
-    </widget>
     <widget class="QLabel">
         <property name="name">
             <cstring>generated_command_Label</cstring>
@@ -122,22 +61,6 @@
         </property>
         <property name="text">
             <string>Command</string>
-        </property>
-    </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>comboBox_Label</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>260</x>
-                <y>269</y>
-                <width>117</width>
-                <height>14</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Last 10 Sent Commands</string>
         </property>
     </widget>
     <widget class="QFrame">
@@ -251,6 +174,83 @@
                 </property>
             </widget>
         </vbox>
+    </widget>
+    <widget class="QGroupBox">
+        <property name="name">
+            <cstring>Commands_groupBox</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>260</x>
+                <y>20</y>
+                <width>171</width>
+                <height>100</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Display Commands</string>
+        </property>
+        <vbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QRadioButton">
+                <property name="name">
+                    <cstring>start_radioButton</cstring>
+                </property>
+                <property name="text">
+                    <string>Start Program</string>
+                </property>
+            </widget>
+            <widget class="QRadioButton">
+                <property name="name">
+                    <cstring>dir_radioButton</cstring>
+                </property>
+                <property name="text">
+                    <string>Display Directory Contents</string>
+                </property>
+            </widget>
+            <widget class="QRadioButton">
+                <property name="name">
+                    <cstring>none_radioButton</cstring>
+                </property>
+                <property name="text">
+                    <string>None</string>
+                </property>
+                <property name="checked">
+                    <bool>true</bool>
+                </property>
+            </widget>
+        </vbox>
+    </widget>
+    <widget class="QComboBox">
+        <property name="name">
+            <cstring>comboBox</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>260</x>
+                <y>300</y>
+                <width>170</width>
+                <height>20</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>comboBox_Label</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>260</x>
+                <y>269</y>
+                <width>117</width>
+                <height>14</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Last 10 Sent Commands</string>
+        </property>
     </widget>
 </widget>
 <menubar>
@@ -385,6 +385,12 @@
         <receiver>CMD_GUI</receiver>
         <slot>showAbout()</slot>
     </connection>
+    <connection>
+        <sender>none_radioButton</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>CMD_GUI</receiver>
+        <slot>cmdNone()</slot>
+    </connection>
 </connections>
 <includes>
     <include location="local" impldecl="in declaration">settings.h</include>
@@ -400,6 +406,7 @@
     <slot>openCMD()</slot>
     <slot>showAbout()</slot>
     <slot>startFF()</slot>
+    <slot>cmdNone()</slot>
 </slots>
 <functions>
     <function access="private" specifier="non virtual">init()</function>
