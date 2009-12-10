@@ -1,4 +1,4 @@
-s/****************************************************************************
+/****************************************************************************
 ** ui.h extension file, included from the uic-generated form implementation.
 **
 ** If you wish to add, delete or rename functions or slots use
@@ -8,6 +8,7 @@ s/****************************************************************************
 *****************************************************************************/
 #include <qtextstream.h>
 #include <qstringlist.h>
+#include <qfile.h>
 
 void Settings::init()
 {
@@ -45,9 +46,7 @@ void Settings::init()
 void Settings::toggleCMD()
 {
 	if (open_CMD_checkBox->isChecked())
-	{
 		do_nothing_checkBox->setChecked(false);
-	}
 }
 
 void Settings::toggleFire()

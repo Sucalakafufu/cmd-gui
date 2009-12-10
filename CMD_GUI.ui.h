@@ -7,7 +7,6 @@
 ** place of a destructor.
 *****************************************************************************/
 #include <qstatusbar.h>
-#include <fstream>
 
 void CMD_GUI::init() //called in constructor
 {
