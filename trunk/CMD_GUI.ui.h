@@ -39,11 +39,33 @@ void CMD_GUI::startFF() //function to start firefox
 
 
 void CMD_GUI::cmdNone()
-{
+{//Make sure only one radio is on at a time
 	if(dir_radioButton->isOn())
 		dir_radioButton->toggle();
 	if(start_radioButton->isOn())
 		start_radioButton->toggle();
-	if(!none_radioButton->isOn())
+	if(!none_radioButton->isOn() && !start_radioButton->isOn() && !dir_radioButton->isOn())
 		none_radioButton->toggle();
+}
+
+
+void CMD_GUI::cmdDisplay()
+{//Make sure only one radio is on at a time
+	if(none_radioButton->isOn())
+		none_radioButton->toggle();
+	if(start_radioButton->isOn())
+		start_radioButton->toggle();
+	if(!none_radioButton->isOn() && !start_radioButton->isOn() && !dir_radioButton->isOn())
+		dir_radioButton->toggle();
+}
+
+
+void CMD_GUI::cmdStart()
+{//Make sure only one radio is on at a time
+	if(dir_radioButton->isOn())
+		dir_radioButton->toggle();
+	if(none_radioButton->isOn())
+		none_radioButton->toggle();
+	if(!none_radioButton->isOn() && !start_radioButton->isOn() && !dir_radioButton->isOn())
+		start_radioButton->toggle();
 }

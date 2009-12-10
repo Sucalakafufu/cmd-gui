@@ -391,6 +391,18 @@
         <receiver>CMD_GUI</receiver>
         <slot>cmdNone()</slot>
     </connection>
+    <connection>
+        <sender>start_radioButton</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>CMD_GUI</receiver>
+        <slot>cmdStart()</slot>
+    </connection>
+    <connection>
+        <sender>dir_radioButton</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>CMD_GUI</receiver>
+        <slot>cmdDisplay()</slot>
+    </connection>
 </connections>
 <includes>
     <include location="local" impldecl="in declaration">settings.h</include>
@@ -407,6 +419,8 @@
     <slot>showAbout()</slot>
     <slot>startFF()</slot>
     <slot>cmdNone()</slot>
+    <slot>cmdDisplay()</slot>
+    <slot>cmdStart()</slot>
 </slots>
 <functions>
     <function access="private" specifier="non virtual">init()</function>
