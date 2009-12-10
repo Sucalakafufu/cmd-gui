@@ -306,6 +306,10 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\settings.ui.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Forms"
