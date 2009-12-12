@@ -63,59 +63,6 @@
             <string>Command</string>
         </property>
     </widget>
-    <widget class="QFrame">
-        <property name="name">
-            <cstring>send_frame</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>350</y>
-                <width>330</width>
-                <height>45</height>
-            </rect>
-        </property>
-        <property name="frameShape">
-            <enum>StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-            <enum>Raised</enum>
-        </property>
-        <hbox>
-            <property name="name">
-                <cstring>unnamed</cstring>
-            </property>
-            <widget class="QLineEdit">
-                <property name="name">
-                    <cstring>CMD_lineEdit</cstring>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>CMD_pushButton</cstring>
-                </property>
-                <property name="text">
-                    <string>Send Command</string>
-                </property>
-            </widget>
-        </hbox>
-    </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>enter_command_label</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>20</x>
-                <y>340</y>
-                <width>75</width>
-                <height>14</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Enter Command</string>
-        </property>
-    </widget>
     <widget class="QLineEdit">
         <property name="name">
             <cstring>display_command_lineEdit</cstring>
@@ -223,19 +170,6 @@
             </widget>
         </vbox>
     </widget>
-    <widget class="QComboBox">
-        <property name="name">
-            <cstring>comboBox</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>260</x>
-                <y>300</y>
-                <width>170</width>
-                <height>20</height>
-            </rect>
-        </property>
-    </widget>
     <widget class="QLabel">
         <property name="name">
             <cstring>comboBox_Label</cstring>
@@ -250,6 +184,81 @@
         </property>
         <property name="text">
             <string>Last 10 Sent Commands</string>
+        </property>
+    </widget>
+    <widget class="QFrame">
+        <property name="name">
+            <cstring>send_frame</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>350</y>
+                <width>330</width>
+                <height>45</height>
+            </rect>
+        </property>
+        <property name="frameShape">
+            <enum>StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+            <enum>Raised</enum>
+        </property>
+        <hbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>CMD_lineEdit</cstring>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>CMD_pushButton</cstring>
+                </property>
+                <property name="text">
+                    <string>Send Command</string>
+                </property>
+            </widget>
+        </hbox>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>enter_command_label</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>340</y>
+                <width>75</width>
+                <height>14</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Enter Command</string>
+        </property>
+    </widget>
+    <widget class="QComboBox">
+        <property name="name">
+            <cstring>comboBox</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>260</x>
+                <y>300</y>
+                <width>170</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="currentItem">
+            <number>0</number>
+        </property>
+        <property name="maxCount">
+            <number>8</number>
+        </property>
+        <property name="insertionPolicy">
+            <enum>BeforeCurrent</enum>
         </property>
     </widget>
 </widget>
@@ -403,6 +412,18 @@
         <receiver>CMD_GUI</receiver>
         <slot>cmdDisplay()</slot>
     </connection>
+    <connection>
+        <sender>CMD_lineEdit</sender>
+        <signal>returnPressed()</signal>
+        <receiver>CMD_GUI</receiver>
+        <slot>sendCommand()</slot>
+    </connection>
+    <connection>
+        <sender>CMD_pushButton</sender>
+        <signal>clicked()</signal>
+        <receiver>CMD_GUI</receiver>
+        <slot>sendCommand()</slot>
+    </connection>
 </connections>
 <includes>
     <include location="local" impldecl="in declaration">settings.h</include>
@@ -421,6 +442,7 @@
     <slot>cmdNone()</slot>
     <slot>cmdDisplay()</slot>
     <slot>cmdStart()</slot>
+    <slot>sendCommand()</slot>
 </slots>
 <functions>
     <function access="private" specifier="non virtual">init()</function>
