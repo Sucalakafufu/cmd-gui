@@ -46,6 +46,9 @@ void CMD_GUI::cmdNone()
 		start_radioButton->toggle();
 	if(!none_radioButton->isOn() && !start_radioButton->isOn() && !dir_radioButton->isOn())
 		none_radioButton->toggle();
+
+	//Put in command box
+	display_command_lineEdit->clear();
 }
 
 
@@ -57,6 +60,9 @@ void CMD_GUI::cmdDisplay()
 		start_radioButton->toggle();
 	if(!none_radioButton->isOn() && !start_radioButton->isOn() && !dir_radioButton->isOn())
 		dir_radioButton->toggle();
+
+	//Put in command box
+	display_command_lineEdit->setText("dir");
 }
 
 
@@ -68,4 +74,19 @@ void CMD_GUI::cmdStart()
 		none_radioButton->toggle();
 	if(!none_radioButton->isOn() && !start_radioButton->isOn() && !dir_radioButton->isOn())
 		start_radioButton->toggle();
+
+	//Put in command box
+	display_command_lineEdit->setText("start yourFile.exe");
+}
+
+
+void CMD_GUI::sendCommand()
+{
+	//TODO: Have lineEdit go to cmd
+	//Remembers line in combo box, max size is 10.
+	comboBox->setMaxCount(8);//BUG: Next line pushes beyond limit, this line fixes this.
+	comboBox->insertItem(CMD_lineEdit->text(), 0);
+	//TODO: Have lineEdit go to QTextBrowser commands
+	//Clears command line
+	CMD_lineEdit->clear();
 }
