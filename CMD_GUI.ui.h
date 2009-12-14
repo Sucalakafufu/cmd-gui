@@ -43,7 +43,6 @@ void CMD_GUI::init() //called in constructor
 	FreeConsole(); AllocConsole();
 	AttachConsole(GetCurrentProcessId());
 	QString hidePath="cmdow \""+cPath+"\\Debug\\CMD_GUI.exe\"";
-	std::string test;
 	std::string convert=hidePath.latin1();
 	for (unsigned int count=0;count<convert.size();count++)
 	{
@@ -51,9 +50,7 @@ void CMD_GUI::init() //called in constructor
 			*(convert.begin()+count)='\\';
 	}
 	convert=convert+" /hid";
-	test="echo "+convert;
-	system(test.c_str());
-	system(convert.c_str());
+	//system(convert.c_str());
 	CMD_lineEdit->setFocus();
 	inHandle = _open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT );
 	inOpenHandle = _fdopen( inHandle, "r" );
@@ -131,16 +128,17 @@ void CMD_GUI::sendCommand()
 		system(CMD_lineEdit->text().latin1()); //figure out how to send this and keep a command line open
 		std::string test, buffer;
 
-		char c; std::string trying;
-		while (c = std::cin.peek())
+		/*char c; std::string trying;*/
+		/*while (c = std::cin.peek())
 		{
 			trying=trying+c;
-		}
+		}*/
 
-		test = commands->text().latin1(); buffer=CMD_lineEdit->text().latin1();
+		/*test = commands->text().latin1(); buffer=CMD_lineEdit->text().latin1(); //to display last text and command
 		if (!commands->text().isEmpty())
 			test=test+"\n";
-		test=test+trying;
+		test=test+trying;*/
+
 		//test=test+buffer;
 		commands->setText(test.c_str());
 
