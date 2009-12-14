@@ -22,8 +22,8 @@
     </property>
     <property name="minimumSize">
         <size>
-            <width>545</width>
-            <height>444</height>
+            <width>21</width>
+            <height>168</height>
         </size>
     </property>
     <property name="maximumSize">
@@ -160,6 +160,81 @@
             </widget>
         </hbox>
     </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>display_command_lineEdit</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>350</x>
+                <y>150</y>
+                <width>170</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="cursor">
+            <cursor>0</cursor>
+        </property>
+        <property name="readOnly">
+            <bool>true</bool>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Displays The Command That Is Checked In Command Help</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>enter_command_label</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>340</y>
+                <width>187</width>
+                <height>14</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+                <pointsize>9</pointsize>
+            </font>
+        </property>
+        <property name="text">
+            <string>Command Line (Enter Commands Here)</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>lastTen_clear_pushButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>480</x>
+                <y>260</y>
+                <width>40</width>
+                <height>23</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Clear</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>lastTen_Label</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>350</x>
+                <y>210</y>
+                <width>117</width>
+                <height>14</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Last 10 Sent Commands</string>
+        </property>
+    </widget>
     <widget class="QFrame">
         <property name="name">
             <cstring>CMD_frame</cstring>
@@ -206,49 +281,6 @@
             </widget>
         </vbox>
     </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>display_command_lineEdit</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>350</x>
-                <y>150</y>
-                <width>170</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property name="cursor">
-            <cursor>0</cursor>
-        </property>
-        <property name="readOnly">
-            <bool>true</bool>
-        </property>
-        <property name="toolTip" stdset="0">
-            <string>Displays The Command That Is Checked In Command Help</string>
-        </property>
-    </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>enter_command_label</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>20</x>
-                <y>340</y>
-                <width>187</width>
-                <height>14</height>
-            </rect>
-        </property>
-        <property name="font">
-            <font>
-                <pointsize>9</pointsize>
-            </font>
-        </property>
-        <property name="text">
-            <string>Command Line (Enter Commands Here)</string>
-        </property>
-    </widget>
     <widget class="QPushButton">
         <property name="name">
             <cstring>helpDisplay_sendToCMD_pushButton</cstring>
@@ -263,38 +295,6 @@
         </property>
         <property name="text">
             <string>Send To Command Line</string>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>lastTen_sendToCMD_pushButton</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>350</x>
-                <y>260</y>
-                <width>124</width>
-                <height>23</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Send To Command Line</string>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>lastTen_clear_pushButton</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>480</x>
-                <y>260</y>
-                <width>40</width>
-                <height>23</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Clear</string>
         </property>
     </widget>
     <widget class="QComboBox">
@@ -319,20 +319,20 @@
             <enum>BeforeCurrent</enum>
         </property>
     </widget>
-    <widget class="QLabel">
+    <widget class="QPushButton">
         <property name="name">
-            <cstring>lastTen_Label</cstring>
+            <cstring>lastTen_sendToCMD_pushButton</cstring>
         </property>
         <property name="geometry">
             <rect>
                 <x>350</x>
-                <y>210</y>
-                <width>117</width>
-                <height>14</height>
+                <y>260</y>
+                <width>124</width>
+                <height>23</height>
             </rect>
         </property>
         <property name="text">
-            <string>Last 10 Sent Commands</string>
+            <string>Send To Command Line</string>
         </property>
     </widget>
 </widget>
@@ -498,6 +498,24 @@
         <receiver>CMD_GUI</receiver>
         <slot>sendCommand()</slot>
     </connection>
+    <connection>
+        <sender>helpDisplay_sendToCMD_pushButton</sender>
+        <signal>clicked()</signal>
+        <receiver>CMD_GUI</receiver>
+        <slot>comHelpSend()</slot>
+    </connection>
+    <connection>
+        <sender>lastTen_sendToCMD_pushButton</sender>
+        <signal>clicked()</signal>
+        <receiver>CMD_GUI</receiver>
+        <slot>lastTenSend()</slot>
+    </connection>
+    <connection>
+        <sender>lastTen_clear_pushButton</sender>
+        <signal>clicked()</signal>
+        <receiver>CMD_GUI</receiver>
+        <slot>lastTenClear()</slot>
+    </connection>
 </connections>
 <includes>
     <include location="local" impldecl="in declaration">settings.h</include>
@@ -517,6 +535,9 @@
     <slot>cmdDisplay()</slot>
     <slot>cmdStart()</slot>
     <slot>sendCommand()</slot>
+    <slot>comHelpSend()</slot>
+    <slot>lastTenSend()</slot>
+    <slot>lastTenClear()</slot>
 </slots>
 <functions>
     <function access="private" specifier="non virtual">init()</function>
