@@ -16,7 +16,6 @@ void CMD_GUI::init() //called in constructor
 
 void CMD_GUI::showSettings() //set fixed size and show settings dialog
 {
-	settings->setFixedSize(188,129);
 	settings->show();
 }
 
