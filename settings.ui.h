@@ -8,6 +8,8 @@
 *****************************************************************************/
 #include <qtextstream.h>
 #include <qfile.h>
+//#include <qdir.h>
+#include <qstring.h>
 
 bool set1, set2, set3;
 

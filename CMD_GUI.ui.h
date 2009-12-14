@@ -7,21 +7,57 @@
 ** place of a destructor.
 *****************************************************************************/
 #include <qstatusbar.h>
+#include <qtextstream.h>
+#include <qfile.h>
+#include <qdir.h>
+#include <qstring.h>
 #include <windows.h>
 #include <iostream>
-//#include <fcntl.h>
-//#include <io.h>
+#include <fcntl.h>
+#include <io.h>
 #include <string>
+#include <stdlib.h>
+#include <conio.h>
+
+int inHandle;
+FILE *inOpenHandle;
 
 void CMD_GUI::init() //called in constructor
 {
 	settings = new Settings(this,0,true,0); //create new settings dialog and about dialog 
 	about = new About(this,0,true,0);
+	QDir path;
+	QString cPath=path.absPath();
+	QFile file("settings.cfg");	
+	QTextStream streamer(&file);
+	if (file.exists())
+	{
+		file.open(IO_ReadOnly);
+		bool pwd=streamer.readLine().toInt();
+		if (pwd)
+		{
+			QString pathDis="Current Directory:\n"+cPath;
+			commands->setText(pathDis);
+		}
+	}
 	FreeConsole(); AllocConsole();
 	AttachConsole(GetCurrentProcessId());
-	/*int inHandle = _open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT );
-	FILE *inOpenHandle = _fdopen( inHandle, "r" );
-	*stdin = *inOpenHandle;*/
+	QString hidePath="cmdow \""+cPath+"\\Debug\\CMD_GUI.exe\"";
+	std::string test;
+	std::string convert=hidePath.latin1();
+	for (unsigned int count=0;count<convert.size();count++)
+	{
+		if (*(convert.begin()+count)=='/')
+			*(convert.begin()+count)='\\';
+	}
+	convert=convert+" /hid";
+	test="echo "+convert;
+	system(test.c_str());
+	system(convert.c_str());
+	CMD_lineEdit->setFocus();
+	inHandle = _open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT );
+	inOpenHandle = _fdopen( inHandle, "r" );
+	*stdin = *inOpenHandle;
 }
 
 void CMD_GUI::showSettings() //show settings dialog
@@ -91,8 +127,46 @@ void CMD_GUI::cmdStart()
 void CMD_GUI::sendCommand()
 {
 	if (!CMD_lineEdit->text().isEmpty())
+	{
 		system(CMD_lineEdit->text().latin1()); //figure out how to send this and keep a command line open
-	std::string test;
+		std::string test, buffer;
+
+		char c; std::string trying;
+		while (c = std::cin.peek())
+		{
+			trying=trying+c;
+		}
+
+		test = commands->text().latin1(); buffer=CMD_lineEdit->text().latin1();
+		if (!commands->text().isEmpty())
+			test=test+"\n";
+		test=test+trying;
+		//test=test+buffer;
+		commands->setText(test.c_str());
+
+		/*TCHAR buffer[20];
+		COORD coord = {0, 0};
+		DWORD nRead;
+
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		ReadConsoleOutputCharacter(hConsole, buffer, 19, coord, &nRead);
+		
+		int BUFFER_SIZE=100;
+		size_t count;
+		char    *pMBBuffer = (char *)malloc( BUFFER_SIZE );
+		TCHAR *pWCBuffer = buffer;
+		count = wcstombs(pMBBuffer, pWCBuffer, BUFFER_SIZE );
+		commands->setText(pMBBuffer);
+		free(pMBBuffer);*/
+	}
+
+	/*HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD bufferSize={5,5};
+	COORD bufferStart;
+	PSMALL_RECT rect;
+	CHAR_INFO *buffer;
+	buffer = (CHAR_INFO *) malloc(25 * 80 * sizeof(CHAR_INFO));
+	ReadConsoleOutput(hStdout, buffer,bufferSize,bufferStart,rect);*/
 	/*while ()
 	{
 		commands->setText(tr(test.c_str()));
