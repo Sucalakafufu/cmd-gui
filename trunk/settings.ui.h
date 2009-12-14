@@ -7,7 +7,6 @@
 ** place of a destructor.
 *****************************************************************************/
 #include <qtextstream.h>
-#include <qstringlist.h>
 #include <qfile.h>
 
 bool set1, set2, set3;
@@ -17,8 +16,6 @@ void Settings::init()
 	set1=set2=set3=false;
 	QFile file("settings.cfg");	
 	QTextStream streamer(&file);
-	QStringList lines;
-	QString temp;
 	if (file.exists())
 	{
 		file.open(IO_ReadOnly);

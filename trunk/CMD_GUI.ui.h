@@ -32,7 +32,7 @@ void CMD_GUI::showAbout() //set fixed size and show about dialog
 
 void CMD_GUI::startFF() //function to start firefox
 {
-	system("start firefox");
+	system("START firefox");
 }
 
 
@@ -80,6 +80,7 @@ void CMD_GUI::cmdStart()
 
 void CMD_GUI::sendCommand()
 {
+	system(CMD_lineEdit->text().latin1()); //figure out how to send this and keep a command line open
 	//TODO: Have lineEdit go to cmd
 	//Remembers line in combo box, max size is 10.
 	lastTen_comboBox->setMaxCount(8);//BUG: Next line pushes beyond limit, this line fixes this.
