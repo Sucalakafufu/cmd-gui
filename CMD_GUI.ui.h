@@ -84,8 +84,8 @@ void CMD_GUI::sendCommand()
 {
 	//TODO: Have lineEdit go to cmd
 	//Remembers line in combo box, max size is 10.
-	comboBox->setMaxCount(8);//BUG: Next line pushes beyond limit, this line fixes this.
-	comboBox->insertItem(CMD_lineEdit->text(), 0);
+	lastTen_comboBox->setMaxCount(8);//BUG: Next line pushes beyond limit, this line fixes this.
+	lastTen_comboBox->insertItem(CMD_lineEdit->text(), 0);
 	//TODO: Have lineEdit go to QTextBrowser commands
 	//Clears command line
 	CMD_lineEdit->clear();
