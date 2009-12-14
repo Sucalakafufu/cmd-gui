@@ -7,10 +7,22 @@
     <property name="geometry">
         <rect>
             <x>0</x>
-            <y>0</y>
-            <width>187</width>
-            <height>134</height>
+            <y>2</y>
+            <width>188</width>
+            <height>129</height>
         </rect>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>188</width>
+            <height>129</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>188</width>
+            <height>129</height>
+        </size>
     </property>
     <property name="caption">
         <string>About</string>
@@ -28,7 +40,7 @@
             </rect>
         </property>
         <property name="text">
-            <string>&lt;p align="center"&gt;CMD GUI Alpha Release 0.1&lt;/p&gt;
+            <string>&lt;p align="center"&gt;CMD GUI Alpha Release 0.1&lt;/p&gt;
 &lt;p align="center"&gt;To Help Those With Less Knowledge of the CMD Prompt.&lt;/p&gt;</string>
         </property>
         <property name="wordWrap">

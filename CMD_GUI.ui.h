@@ -26,7 +26,6 @@ void CMD_GUI::openCMD() //start CMD Prompt
 
 void CMD_GUI::showAbout() //set fixed size and show about dialog
 {
-	about->setFixedSize(188,129);
 	about->show();
 }
 
@@ -61,7 +60,7 @@ void CMD_GUI::cmdDisplay()
 		dir_radioButton->toggle();
 
 	//Put in command box
-	display_command_lineEdit->setText("dir");
+	display_command_lineEdit->setText("DIR");
 }
 
 
@@ -75,7 +74,7 @@ void CMD_GUI::cmdStart()
 		start_radioButton->toggle();
 
 	//Put in command box
-	display_command_lineEdit->setText("start yourFile.exe");
+	display_command_lineEdit->setText("START <file.exe>");
 }
 
 
