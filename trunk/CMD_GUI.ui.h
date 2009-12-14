@@ -7,6 +7,7 @@
 ** place of a destructor.
 *****************************************************************************/
 #include <qstatusbar.h>
+#include <windows.h>
 
 void CMD_GUI::init() //called in constructor
 {
@@ -82,10 +83,31 @@ void CMD_GUI::sendCommand()
 {
 	system(CMD_lineEdit->text().latin1()); //figure out how to send this and keep a command line open
 	//TODO: Have lineEdit go to cmd
+	//AttachConsole(ATTACH_PARENT_PROCESS(DWORD)-1);
 	//Remembers line in combo box, max size is 10.
-	lastTen_comboBox->setMaxCount(8);//BUG: Next line pushes beyond limit, this line fixes this.
+	lastTen_comboBox->setMaxCount(8);
 	lastTen_comboBox->insertItem(CMD_lineEdit->text(), 0);
 	//TODO: Have lineEdit go to QTextBrowser commands
 	//Clears command line
 	CMD_lineEdit->clear();
+}
+
+
+void CMD_GUI::comHelpSend()
+{
+	CMD_lineEdit->clear();
+	CMD_lineEdit->setText(display_command_lineEdit->text());
+}
+
+
+void CMD_GUI::lastTenSend()
+{
+	CMD_lineEdit->clear();
+	CMD_lineEdit->setText(lastTen_comboBox->currentText());
+}
+
+
+void CMD_GUI::lastTenClear()
+{
+	lastTen_comboBox->clear();
 }
