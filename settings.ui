@@ -8,9 +8,21 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>188</width>
-            <height>125</height>
+            <width>250</width>
+            <height>130</height>
         </rect>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>250</width>
+            <height>130</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>250</width>
+            <height>130</height>
+        </size>
     </property>
     <property name="caption">
         <string>Settings</string>
@@ -23,7 +35,7 @@
             <rect>
                 <x>10</x>
                 <y>0</y>
-                <width>153</width>
+                <width>221</width>
                 <height>91</height>
             </rect>
         </property>
@@ -39,10 +51,10 @@
             </property>
             <widget class="QCheckBox">
                 <property name="name">
-                    <cstring>open_CMD_checkBox</cstring>
+                    <cstring>display_PWD_checkBox</cstring>
                 </property>
                 <property name="text">
-                    <string>Open CMD At Startup</string>
+                    <string>Display Working Directory At Startup</string>
                 </property>
             </widget>
             <widget class="QCheckBox">
@@ -74,7 +86,7 @@
             <rect>
                 <x>0</x>
                 <y>80</y>
-                <width>192</width>
+                <width>250</width>
                 <height>47</height>
             </rect>
         </property>
@@ -127,7 +139,7 @@
         <slot>toggleNothing()</slot>
     </connection>
     <connection>
-        <sender>open_CMD_checkBox</sender>
+        <sender>display_PWD_checkBox</sender>
         <signal>clicked()</signal>
         <receiver>Settings</receiver>
         <slot>toggleCMD()</slot>
@@ -138,6 +150,12 @@
         <receiver>Settings</receiver>
         <slot>toggleFire()</slot>
     </connection>
+    <connection>
+        <sender>Save</sender>
+        <signal>clicked()</signal>
+        <receiver>Settings</receiver>
+        <slot>saveSettings()</slot>
+    </connection>
 </connections>
 <includes>
     <include location="local" impldecl="in implementation">settings.ui.h</include>
@@ -146,6 +164,7 @@
     <slot>toggleCMD()</slot>
     <slot>toggleFire()</slot>
     <slot>toggleNothing()</slot>
+    <slot>saveSettings()</slot>
 </slots>
 <functions>
     <function access="private">init()</function>

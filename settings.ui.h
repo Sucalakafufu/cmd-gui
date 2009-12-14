@@ -10,56 +10,106 @@
 #include <qstringlist.h>
 #include <qfile.h>
 
+bool set1, set2, set3;
+
 void Settings::init()
-{
-	bool set1, set2, set3;
+{	
 	set1=set2=set3=false;
 	QFile file("settings.cfg");	
 	QTextStream streamer(&file);
 	QStringList lines;
 	QString temp;
-	file.open(IO_ReadOnly);
-	set1 = streamer.readLine().toInt();
-	set2 = streamer.readLine().toInt();
-	set3 = streamer.readLine().toInt();
-	file.close();
-	if (set1)
+	if (file.exists())
 	{
-		open_CMD_checkBox->setChecked(true);
-		system("START CMD");
+		file.open(IO_ReadOnly);
+		set1 = streamer.readLine().toInt();
+		set2 = streamer.readLine().toInt();
+		set3 = streamer.readLine().toInt();
+		if (set1)
+		{
+			display_PWD_checkBox->setChecked(true);
+		}
+		else
+			display_PWD_checkBox->setChecked(false);
+		if (set2)
+		{
+			start_Fire_checkBox->setChecked(true);
+			system("START firefox");
+		}
+		else
+			start_Fire_checkBox->setChecked(false);
+		if (set3)
+			do_nothing_checkBox->setChecked(true);
+		else
+			do_nothing_checkBox->setChecked(false);
 	}
 	else
-		open_CMD_checkBox->setChecked(false);
-	if (set2)
 	{
-		start_Fire_checkBox->setChecked(true);
-		system("START firefox");
-	}
-	else
+		set3=true;
+		display_PWD_checkBox->setChecked(false);
 		start_Fire_checkBox->setChecked(false);
-	if (set3)
 		do_nothing_checkBox->setChecked(true);
-	else
-		do_nothing_checkBox->setChecked(false);
+	}
+	file.close();	
 }
 
 void Settings::toggleCMD()
 {
-	if (open_CMD_checkBox->isChecked())
+	if (display_PWD_checkBox->isChecked())
+	{
+		set1=true;
+		set3=false;
 		do_nothing_checkBox->setChecked(false);
+	}
+	else if (!start_Fire_checkBox->isChecked() && !do_nothing_checkBox->isChecked())
+	{
+		set3=true;
+		set1=set2=false;
+		do_nothing_checkBox->setChecked(true);
+	}
 }
 
 void Settings::toggleFire()
 {
 	if (start_Fire_checkBox->isChecked())
+	{
+		set2=true;
+		set3=false;
 		do_nothing_checkBox->setChecked(false);
+	}
+	else if (!display_PWD_checkBox->isChecked() && !do_nothing_checkBox->isChecked())
+	{
+		set3=true;
+		set1=set2=false;
+		do_nothing_checkBox->setChecked(true);
+	}
 }
 
 void Settings::toggleNothing()
 {
 	if (do_nothing_checkBox->isChecked())
 	{
-		open_CMD_checkBox->setChecked(false);
+		set3=true;
+		set1=set2=false;
+		display_PWD_checkBox->setChecked(false);
 		start_Fire_checkBox->setChecked(false);
 	}
+	else if (!start_Fire_checkBox->isChecked() && !display_PWD_checkBox->isChecked())
+	{
+		set3=true;
+		set1=set2=false;
+		do_nothing_checkBox->setChecked(true);
+	}
+}
+
+
+void Settings::saveSettings()
+{
+	QFile saving("settings.cfg");
+	QTextStream streamer(&saving);
+	saving.open(IO_WriteOnly);
+	streamer << set1 << endl;
+	streamer << set2 << endl;
+	streamer << set3 << endl;
+	saving.close();
 }
