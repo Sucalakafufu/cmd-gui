@@ -11,7 +11,7 @@
 //#include <qdir.h>
 #include <qstring.h>
 
-bool set1, set2, set3;
+bool set1, set2, set3, oldSet1, oldSet2, oldSet3;
 
 void Settings::init()
 {	
@@ -21,9 +21,9 @@ void Settings::init()
 	if (file.exists())
 	{
 		file.open(IO_ReadOnly);
-		set1 = streamer.readLine().toInt();
-		set2 = streamer.readLine().toInt();
-		set3 = streamer.readLine().toInt();
+		set1 = oldSet1 = streamer.readLine().toInt();
+		set2 = oldSet2 = streamer.readLine().toInt();
+		set3 = oldSet3 = streamer.readLine().toInt();
 		if (set1)
 		{
 			display_PWD_checkBox->setChecked(true);
@@ -111,4 +111,23 @@ void Settings::saveSettings()
 	streamer << set2 << endl;
 	streamer << set3 << endl;
 	saving.close();
+	oldSet1=set1; oldSet2=set2; oldSet3=set3;
+}
+
+
+void Settings::cancelSettings()
+{
+	set1=oldSet1; set2=oldSet2; set3=oldSet3;
+	if (set1)
+		display_PWD_checkBox->setChecked(true);
+	else
+		display_PWD_checkBox->setChecked(false);
+	if (set2)
+		start_Fire_checkBox->setChecked(true);
+	else
+		start_Fire_checkBox->setChecked(false);
+	if (set3)
+		do_nothing_checkBox->setChecked(true);
+	else
+		do_nothing_checkBox->setChecked(false);
 }
